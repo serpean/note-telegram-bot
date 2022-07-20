@@ -22,5 +22,5 @@ class Note:
         if len(self.item_list) == 0:
             return "No notes!"
         else:
-            items = '\n'.join([str(i + 1) + '. ' + n for i, n in enumerate(note)])
+            items = '\n'.join([str(i + 1) + '. ' + n for i, n in enumerate(self.item_list)])
             return "Notes: \n" + items

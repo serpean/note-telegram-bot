@@ -2,11 +2,18 @@ from telegram import Update
 from telegram.ext import ContextTypes
 from note import Note
 
-note = Note("note")
+notes = {}
+
+
+def get_or_create_note(chat_id):
+    if chat_id not in notes:
+        notes[chat_id] = Note(chat_id)
+    return notes[chat_id]
 
 
 async def note_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     inner_command = context.args[0]
+    note = get_or_create_note(update.effective_chat.id)
     if inner_command == "add":
         text_note = ' '.join(context.args[1:])
         note.add(text_note)
