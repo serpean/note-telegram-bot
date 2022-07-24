@@ -10,7 +10,7 @@ class Note:
         if value in self.item_list:
             self.item_list.remove(value)
             return True
-        if value.isdigit() and int(value) > 0 and value not in note:
+        if value.isdigit() and int(value) > 0 and value not in self.item_list:
             self.item_list.pop(int(value) - 1)
             return True
         return False

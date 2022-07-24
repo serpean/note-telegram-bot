@@ -17,7 +17,7 @@ async def note_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> No
     if inner_command == "add":
         text_note = ' '.join(context.args[1:])
         note.add(text_note)
-        await context.bot.send_message(chat_id=update.effective_chat.id, text="Note %s added!" % text_note)
+        await context.bot.send_message(chat_id=update.effective_chat.id, text=note.list_str())
     elif inner_command == "list":
         await context.bot.send_message(chat_id=update.effective_chat.id, text=note.list_str())
     elif inner_command == "remove":
